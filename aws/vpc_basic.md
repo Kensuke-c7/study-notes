@@ -22,3 +22,21 @@ AWSのコア中のコアサービスで、まずはこれを抑えないこと�
 - VPN接続：オンプレとVPN接続できる（AWS Virtual Private Network (AWS VPN)
 - 閉域接続：オンプレと閉域接続できる（AWS Direct Connect）
 - Transit Gateway：VPC、VPN接続、AWS Direct Connect 接続間のトラフィックをルーティングできる
+
+## サブネット、ルートテーブル
+
+## ＤＮＳ（AmazonProvidedDNS）
+
+## ＤＨＣＰ（DHCP Options Set）
+
+## セキュリティグループ、ＮＡＣＬ
+
+## ゲートウェイ（ＩＧＷ、ＮＧＷ、ＶＧＷ、ＤＸＧＷ）
+
+## ＶＰＣエンドポイント／Ｇａｔｅｗａｙエンドポイント
+
+## ＤｉｒｅｃｔＣｏｎｎｅｃｔ
+
+## Ｔｒａｎｓｉｔ Ｇａｔｅｗａｙ
+
+
