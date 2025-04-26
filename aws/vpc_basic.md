@@ -23,6 +23,7 @@ AWSのコア中のコアサービスで、まずはこれを抑えないこと�
 - 閉域接続：オンプレと閉域接続できる（AWS Direct Connect）
 - Transit Gateway：VPC、VPN接続、AWS Direct Connect 接続間のトラフィックをルーティングできる
 
+
 ## サブネット、ルートテーブル
 
 ## ＤＮＳ（AmazonProvidedDNS）
