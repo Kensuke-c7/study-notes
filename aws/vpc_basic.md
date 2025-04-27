@@ -83,7 +83,7 @@ VPC＝１個の巨大な仮想ルータで、サブネット＝仮想ルータ�
   - 4.伝搬されたルート（DirectConnect BGPルートなど）
 <br><br>
 
-## ENI（Elastic Network Interface）：AWSにおける仮想NIC
+## ＥＮＩ（Elastic Network Interface）：AWSにおける仮想NIC
 - IPアドレスとMACアドレスを持つ
 - VPC内リソース間通信の通信エンドポイントになる
 - 1つ以上のセキュリティグループを必ずアタッチする
