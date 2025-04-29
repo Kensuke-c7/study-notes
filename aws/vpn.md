@@ -8,11 +8,11 @@
 # AWS Site-to-Site VPN
 インターネット回線でVPCとリモートサイトをIPSecVPN接続するマネージドサービス。
 
-### 特徴・機能
+#### 特徴・機能
 - IPSecVPNによる暗号化トンネルの確立（デフォルト２本）
 - VPN接続1本ごとに時間課金＋データ転送料課金
 
-### ■ 仕組み
+#### ■ 仕組み(コンポーネント)
 ![image](https://github.com/user-attachments/assets/9921b415-ec82-4fbe-9e04-b39e79a3d08d)
 
 - VPN Connection（VPN接続）：CGWとVGW間の暗号化トンネル（デフォルト2本）
@@ -21,7 +21,7 @@
 - カスタマーゲートウェイデバイス：リモート側の物理デバイスまたはソフトウェア
 - ターゲットゲートウェイ：Site-to-SiteVPN接続のAmazon側VPNエンドポイントの総称。
 
-### ■ 制限
+#### ■ 制限
 - IPv6非サポート
 - パスMTU検出非サポート
 - VGWからIPSec接続を開始しない
