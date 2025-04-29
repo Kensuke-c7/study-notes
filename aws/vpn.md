@@ -3,24 +3,28 @@
 - 既存のインターネット回線から接続可能（調達・維持コスト低）
 - 帯域保証なし（ベストエフォート）
 - 回線品質は安定しない（パケットロスあり、遅延・ジッタが比較的大きい）
-
+<br><br>
 
 # AWS Site-to-Site VPN
 インターネット回線でVPCとリモートサイトをIPSecVPN接続するマネージドサービス。
 
-### ■ 機能
-- IKEv2サポート
-- NATトラバーサル
-- Cloud
+### 特徴・機能
+- IPSecVPNによる暗号化トンネルの確立（デフォルト２本）
+- VPN接続1本ごとに時間課金＋データ転送料課金
 
-### ■ 構成
-![image](https://github.com/user-attachments/assets/e8154a56-ce7d-4b39-be68-ec4cc1b7ee11)
+### ■ 仕組み
+![image](https://github.com/user-attachments/assets/9921b415-ec82-4fbe-9e04-b39e79a3d08d)
 
-- VPN Connection（VPN接続）：CGWとVGW間の暗号化トンネル
-- 仮想プライベートゲートウェイ（VGW）：VPN接続のAWS側エンドポイント
-- カスタマーゲートウェイ（CGW）：VPN接続のリモート側エンドポイント
+- VPN Connection（VPN接続）：CGWとVGW間の暗号化トンネル（デフォルト2本）
+- 仮想プライベートゲートウェイ（VGW）：VPN接続のAWS側VPNエンドポイント
+- カスタマーゲートウェイ（CGW）：VPN接続のリモート側VPNエンドポイント
 - カスタマーゲートウェイデバイス：リモート側の物理デバイスまたはソフトウェア
 - ターゲットゲートウェイ：Site-to-SiteVPN接続のAmazon側VPNエンドポイントの総称。
+
+### ■ 制限
+- IPv6非サポート
+- パスMTU検出非サポート
+- VGWからIPSec接続を開始しない
   
 
 
