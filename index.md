@@ -2,6 +2,6 @@
 
 ここは自分用の勉強ノートまとめだよ～ヾ(o´▽`o)ﾉ))　✍️
 
-[VPC](https://kensuke-c7.github.io/study-notes/vpc.html)<br>
+[VPC](https://kensuke-c7.github.io/study-notes/aws/vpc.html)<br>
 VPN<br>
 DirectConnect<br>
