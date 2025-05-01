@@ -1,10 +1,10 @@
-# Direct Connect（DX）：専用線を使った閉域接続サービス
+# AWS Direct Connect（DX）：専用線を使った閉域接続サービス
 利用者がキャリアから調達する専用線の片端とAWSCloudをDirectConnectロケーションで接続するサービス。
 
 ![image](https://github.com/user-attachments/assets/5ddf43c3-eb1e-4f7d-8d86-c5d10364b5f3)
 
 
-#### 特徴・機能
+#### ■ 特徴・機能
 - 専用線（高帯域、低遅延・少ジッタ、高セキュリティ）
 - デリバリーパートナー（通信キャリア）の回線サービスを経由して接続する ※DXロケーション内での直接接続も可
 - 帯域：50Mbps～100Gbps
@@ -35,7 +35,8 @@ DirectConnectデリバリパートナー（通信キャリア）を通じてDX�
 <br><br>
 
 ## 仮想インタフェース（VIF）：BGP接続用の仮想インタフェース
-Connection（接続）上でBGPピアを確立するための論理インターフェイス。IPアドレスを持つVIFをルータ（ゲートウェイ）にアタッチして利用するイメージ。
+Connection（接続）を通してBGPピアを確立するための論理インターフェイス。IPアドレスを持つVIFをルータ（ゲートウェイ）にアタッチして利用するイメージ。
+- 作成したVIFをゲートウェイ（DXGW or VGW）にアタッチして利用する
 - 利用目的に応じた３つのVIFタイプを選択（プライベート、パブリック、トラジット）
 - VIF作成時に必要な情報（VIF共通）
   - VIFを作成する物理接続（DX接続） 
@@ -46,28 +47,20 @@ Connection（接続）上でBGPピアを確立するための論理インター�
   - IPアドレス（利用者側、カスタマー側双方）
   - BGP MD5シークレット
 
+### プライベートVIF：VPC接続用VIF
+- プライベートアドレスでVPCへ接続するためのVIF
+- DXGWまたはVGWにアタッチ可能（DXGWへの接続推奨）
 
-  - プライベートVIF：VPCへプライベートIPを介した接続を提供
-  - パブリックVIF：AWSの全リージョンへパブリックIPを介した接続を提供
-  - トランジットVIF：Transit Gateway用のDirect Connectゲートウェイへ接続を提供
-    - DirectConnect 1/2/5/10Gbps接続でのみ作成可能（**パートナーによる共有型接続では利用できない**）
-ｰ クロスアカウント利用：Connectionを所有しているAWSアカウントから、他のAWSアカウントに対してVIFを提供することが可能
-  - データ転送料については、各アカウントに課金
+### パブリックVIF：グローバルアドレスでAWSサービスにアクセスするためのVIF
+- インターネット上で公開されているAWSサービス（S3等）を利用可能
+- グローバルアドレスが必要
 
-### プライベート接続：Direct Connectゲートウェイ(DXGW)タイプ(推奨)
+### トランジットVIF：TGW接続用VIF
+- （DXGW経由で）TGWと接続するためのVIF（プライベートVIFはTGWと通信不可）
+- 占有接続の場合は1つのみ、ホスト型接続の場合は1Gbps以上の場合のみ作成可
+  - **パートナーによる共有型接続では利用できない**
 
-![image](https://github.com/user-attachments/assets/0da1f15e-073a-4e95-8708-5ead25832338)
-
-- プライベートVIFを使用して複数のVPCへ接続を提供
-- お客様ルータでBGP, MD5認証, IEEE802.1q VLANのサポートが必要
-- VPCのCIDR(IPv4,IPv6)がすべてAWSから広告される（フィルタリング可能）
-- Jumbo Frame(MTU=9001)をサポート
-
-### パブリック接続
-### トランジット接続
-
-
-## AWS Direct Connectゲートウェイ
+## Direct Connect Gateway（DXGW）：
 
 
   
