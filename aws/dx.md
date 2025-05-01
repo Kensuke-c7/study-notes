@@ -59,9 +59,11 @@ Connection（接続）を通してBGPピアを確立するための論理イン�
 - （DXGW経由で）TGWと接続するためのVIF（プライベートVIFはTGWと通信不可）
 - 占有接続の場合は1つのみ、ホスト型接続の場合は1Gbps以上の場合のみ作成可
   - **パートナーによる共有型接続では利用できない**
+<br><br>
 
 ## Direct Connect Gateway（DXGW）：
 
 
-  
+## 参考
+[AWSブラックベルト](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://d1.awsstatic.com/webinars/jp/pdf/services/20210209-AWS-Blackbelt-DirectConnect.pdf "タイトル")
   
