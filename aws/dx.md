@@ -16,26 +16,25 @@
 
 #### ■ 仕組み(コンポーネント)
 - DirectConnectロケーション：AWSの物理ルータ（DXエンドポイント）が設置してある、データセンター事業者のデータセンター
-- DirectConnect接続：物理的な接続
-- DirectConnectエンドポイント：DirectConnectロケーション内に設置されたAWS側ネットワーク機器。利用者側の回線を終端する。
-- 仮想インタフェース（VIF）：
-- DirectConnectGateway（DXGW）：DirectConnectエンドポイントから複数のVPCに接続したい場合に利用する機能。DXGWを介して複数VPCと相互接続できる。
+- DirectConnect接続：DirectConnectロケーション内の物理的な接続
+- DirectConnectエンドポイント：DirectConnectロケーション内に設置されたAWS側ルータ。利用者側の回線を終端する。
+- 仮想インタフェース（VIF）：DirectConnect接続上に作成される仮想インタフェース
+- DirectConnectGateway（DXGW）：オンプレーVPC間の転送を行うAWSリソース。VIFをアタッチする。
 <br><br>
 
-### DirectConnect接続：物理接続
-物理的な専用線接続。回線の利用形態により２つの接続タイプ。
+## DirectConnect接続：物理接続
+カスタマールータ～AWSルータ間の物理的な接続。回線の利用形態により２つの接続タイプ。
 ### Dedicated接続（占有接続）
 物理的に一つの回線（ポート）を占有して使用する形態。利用者自身が回線を手配する。
 - 利用者自身が物理接続を手配（コロケーション内の利用者側機器～DXエンドポイント間の回線敷設） 
 - 帯域：1Gbps／10Gbps／100Gbpsから選択
 - 複数のVIFを作成可能
-
 ### Hosted接続（ホスト型接続）
-DirectConnectデリバリパートナー（通信キャリア）を通じてDXを利用する形態。
-- パートナーが所有する物理接続を複数のユーザで共有（論理分割）する形態（利用者側で回線敷設は不要）
+DirectConnectデリバリパートナー（通信キャリア）を通じて接続を利用する形態。
+- パートナーが所有する物理接続を複数のユーザで共有（論理分割）する（利用者側で回線敷設は不要）
 - Connectionを所有しているAWSアカウントから利用者側のAWSアカウントに対してVIFを提供（クロスアカウント利用）
 - 利用帯域：50Mbps／100Mbps／200Mbps／300Mbps／400Mbps／500Mbps, 1Gbps／2Gbps／5Gbps／10Gbps
-- ユーザ側で利用可能なVIF（HostedVIF）は1つ
+- 接続上でユーザ側で利用可能なVIFは1つ（HostedVIF）
 - ユーザ側でVIFの削除、再作成が可能
 <br><br>
 
@@ -78,7 +77,8 @@ DXGWに複数のVPCをアタッチすることで、オンプレから単一のD
 - 複数のVIFとVGWをアタッチ可能
   - 最大10VPCをアタッチ可（DXGWとVPCが同一アカウントである必要はない＝マルチアカウント対応可） 
 - 折り返し通信不可（DXGWを経由したオンプレ間通信やVPC間通信）
-- 利用料なし
+- DXGW自体の利用料はなし
+<br><br>
 
 ## Transit Gateway（TGW）：VPCの集約HUB
 DXGWに複数のVPCをアタッチすることで、オンプレから単一のDX接続で複数のVPCに接続ができる。
