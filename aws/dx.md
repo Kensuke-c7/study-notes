@@ -61,9 +61,12 @@ Connection（接続）を通してBGPピアを確立するための論理イン�
   - **パートナーによる共有型接続では利用できない**
 <br><br>
 
-## Direct Connect Gateway（DXGW）：
+## Direct Connect Gateway（DXGW）：VPCの集約接続
+DXGWに複数のVPCをアタッチしてVPCの集約接続ができる
+- 
+- 
 
 
 ## 参考
-[AWSブラックベルト](chrome-extension://efaidnbmnnnibpcajpcglclefindmkaj/https://d1.awsstatic.com/webinars/jp/pdf/services/20210209-AWS-Blackbelt-DirectConnect.pdf "タイトル")
+[[AWS Black Belt Online Seminar] AWS Direct Connect 資料及び QA 公開](https://aws.amazon.com/jp/blogs/news/webinar-bb-awsdirectconnect-2021/)
   
