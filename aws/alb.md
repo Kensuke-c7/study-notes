@@ -70,10 +70,12 @@ ELBの各種状態（リクエスト数、ターゲットの応答時間など�
 <br><br>
 
 ## ALB（Application Load Balancer）
-L7（アプリケーション層）で動作する、HTTP/HTTPS/WebSocket対応のロードバランサー。
+アプリケーション層で動作する多機能Ｌ７ロードバランサー。
+<br><br>
+![image](https://github.com/user-attachments/assets/5e8a42e1-81d1-4485-96b7-1d0e019471ad)
 - リバースプロキシとして動作（送信元IPはALBのIPに置き換えられる）
 - HTTP/HTTPS および WebSocket トラフィックをルーティング
-- 高度なルーティングが可能（ルーティング条件：パスベース／ホストベース／ヘッダーベース／クエリパラメータ等）
+- 高度なルーティング処理が可能（ルーティング条件：パスベース／ホストベース／ヘッダーベース／クエリパラメータ等）
 - Cookieベースのセッションアフィニティ（AWSALB（or AWSALBTG）というCookieを発行）
 - HTTP→HTTPSリダイレクトなどのリダイレクト機能あり
 - ターゲット
@@ -84,6 +86,20 @@ L7（アプリケーション層）で動作する、HTTP/HTTPS/WebSocket対応�
 - ENI（Elastic Network Interface）を持つ → セキュリティグループでアクセス制御が可能
 - SSLターミネーション対応（ACMで管理されたSSL証明書をアタッチ可能）
 <br><br>
+
+■ ALBの基本コンポーネント
+<br><br>
+![image](https://github.com/user-attachments/assets/97a6cba2-f720-44ed-8906-d6f84b313f48)
+<br><br>
+### リスナー（Listener）
+ALBがパケットを受け入れるポート・プロトコルの定義と、ルーティングルールの起点。
+- １つのALBに複数リスナーをアタッチ可能
+- ALBは1つのリスナーに対して複数のルーティングルールを定義可（1:N構成）
+### リスナールール、条件
+
+
+
+
 
 ## NLB（Network Load Balancer）
 L4（トランスポート層）で動作する、TCP/UDP対応の超高速ロードバランサー。処理速度優先の設計思想
