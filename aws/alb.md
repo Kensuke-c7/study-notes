@@ -95,11 +95,7 @@ ELBでSSL通信を終端またはバイパスできる
 - 高度なルーティング処理（コンテンツベースルーティング）
 - Cookieベースのセッションアフィニティ（AWSALB（or AWSALBTG）というCookieを発行）
 - HTTP→HTTPSリダイレクトなどのリダイレクト機能あり
-- ターゲット
-  - EC2インスタンス
-  - IPアドレス（VPC外リソースも可）
-  - Lambda関数（ALB限定）
-- ENIに割り当てられるプライベートIPは動的で固定化（EIP等）は不可（DNS名による制御が基本）
+- ENIに割り当てられるプライベートIPは動的で固定化不可（DNS名による制御が基本）
 - ENI（Elastic Network Interface）を持つ → セキュリティグループでアクセス制御が可能
 - SSLターミネーション対応（ACMで管理されたSSL証明書をアタッチ可能）
 - オプション機能：認証（Amazon Cognito）、WAF（AWS WAF）
