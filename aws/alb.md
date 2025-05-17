@@ -175,6 +175,7 @@ TCP,UPD,TCP_UDPに加えて、TLSパケットのルーティングが可能
 - TLSリスナーの場合、NLBがTLS通信を終端（＝SYN/ACKもNLBが応答、送信元IPは保持される。L4レベルで透過的）
 - SNIに応じたターゲットグループへのルーティング可能
 - ACMを利用した証明書のデプロイが必要
+<br><br>
 
-
-## Auto Scalling
+## 参考資料・引用
+[Elastic Load Balancing (ELB) [AWS Black Belt Online Seminar]](https://d1.awsstatic.com/webinars/jp/pdf/services/20191029_AWS-Blackbelt_ELB.pdf)
