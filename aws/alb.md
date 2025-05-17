@@ -1,14 +1,14 @@
 # ELB（Elastic Load Balancing）
 AWSが提供するフルマネージドロードバランサーサービス。アプリケーションへのトラフィックを、１つまたは複数のAZ内の複数のターゲットに自動的に分散する。
 
-## ■ 基本情報
+## 基本情報
 - リージョン単位のサービス
 - ３種類のタイプ：
   - ALB（Application Load Balancer） – 第7層、HTTP/HTTPS向け
   - NLB（Network Load Balancer） – 第4層、TCP/UDP向け、超低レイテンシ対応
   - CLB（Classic Load Balancer） – レガシー（非推奨だが互換性あり
 
-## ELBの主な機能（共通機能）
+## ELBの基本機能（ALB/NLB/CLB機能）
 ### ■ 負荷分散
 2段階の負荷分散（ゾーン負荷分散＋バックエンド負荷分散）
 - クロスゾーン負荷分散（ゾーン内のターゲット数に応じてAZに振り分けるリクエストを均等化）
