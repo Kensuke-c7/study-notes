@@ -139,14 +139,15 @@ CloudFrontがコンテンツをキャッシュして配信する拠点（デー�
   - メトリクス：リクエスト量、転送量、キャッシュヒット率、オリジンレイテンシ、ステータスコードエラー率など。。 
 <br><br>
 
-# Origin
+# オリジン（Origin）
 ![image](https://github.com/user-attachments/assets/2bca5dfd-3136-443e-922a-e1344f07adb1)
 <br><br>
 - S3オリジンとカスタムオリジン（s3以外のオリジン）
 - オブジェクトをエッジにキャッシュして高速配信
 - HTTPSでCloudFrontと通信可能（TLS1.2など）
 - CloudFrontの機能として同様にモニタリング・ログ出力可能
-
+<br><br>
+## オリジンタイプ
 ### S3オリジン
 S3バケットをオリジンとしたもの。他のオリジンと異なりS3向けに最適化（独自機能と制限）。
 - S3の内部APIを使って、効率よくファイルを取得（AWSファミリーだから特別扱いでAPIで取りに行く）
@@ -165,6 +166,39 @@ S3以外のオリジン（ALB、EC2、API Gateway等）で通常のHTTPサーバ
   - レスポンスヘッダをオリジンサーバ側で自由に設定できる
 - 独自のアクセス制御機能なし
 - ヘルスチェック機能なし
+<br><br>
+
+## オリジンの設定項目
+### ■ Origin Domain Name（ドメイン名）
+リクエストの転送先ドメイン名。<br>
+CloudFront からオリジンへ送るリクエストの ホスト部（Hostヘッダー） は、このドメイン名に書き換えられる。
+- オリジンリクエストのHost部
+- ※X-Forwarde-Host は自動で付加されない
+### ■ Origin Path（パス）
+CloudFront → オリジン へのリクエストパスの先頭に付加される。
+最終的なオリジンリクエストの構造は：
+```
+https://{オリジンドメイン名}{Origin Path}{Viewer リクエストパス}
+```
+### ■ オリジンカスタムヘッダー（Origin Custom Headers）
+オリジン毎に固定ヘッダーの追加もしくは、クライアントからのリクエストヘッダーの上書きが可能。<br>
+- クライアントリクエストの内容にかかわらず、CloudFront が毎回付加する。
+- Shared-Secret：オリジン側でCloufFront側からの任意のHTTPヘッダー値のチェックを⾏うことでカスタムオリジンはCloudFrontからのアクセスのみに制御する。
+### ■ Enable Origin Shield
+CloudFront のキャッシュ階層に「中央キャッシュノード（Origin Shield）」を追加する機能。<br>
+複数のエッジロケーションからのリクエストをまとめ、オリジンへのリクエスト回数を削減できる。
+### ■ Origin Connection Attempts／Origin Connection Timeout
+CloudFront がオリジンへ接続を試みる 最大回数 と 接続タイムアウト秒数。
+### ■ Origin Protocol Policy ※カスタムオリジンのみ
+CloudFront とカスタムオリジン間の通信プロトコルを指定する（HTTP / HTTPS / Viewerと同じ など）。
+### ■ カスタムオリジンのタイムアウト
+- Origin Response Timeout：カスタムオリジンからの応答を待つ時間を指定（デフォルト30秒、4〜60 秒で設定可能）
+- Origin Keep-alive Timeout：カスタムオリジンサーバーとの持続的接続を維持する最⼤時間（デフォルト5秒、1〜60 秒で設定可能）
+オリジン応答タイムアウト と オリジン持続的接続のタイムアウト
+### ■ オリジンアクセス（OAC） ※S3オリジンのみ
+CloudFront ディストリビューション経由でのみ S3 バケットへアクセスさせるための認証方式。<br>
+従来の OAI（Origin Access Identity）より柔軟でセキュア。
+<br><br>
 
 # ビヘイビア（Behavior）
 CloudFrontの「リクエスト仕分け＆処理ルール」。<br>
