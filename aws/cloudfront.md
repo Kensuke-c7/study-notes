@@ -182,6 +182,7 @@ CloudFrontの「リクエスト仕分け＆処理ルール」。<br>
 #### キャッシュ TTL（最小/最大/デフォルト）：オブジェクトをどれだけ長くキャッシュするか
 例：/img/logo.png は長め（1日）、/index.html は短め（数秒〜分）
 #### 圧縮（gzip/brotli）：CloudFrontでレスポンスを圧縮するかどうか
+<br><br>
 
 # Lambda@Edge
 CloudFrontのエッジロケーションでLambda関数を実行できるサービス。<br>
