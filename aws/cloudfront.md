@@ -258,3 +258,5 @@ CloudFrontのエッジロケーションでLambda関数を実行できるサー�
 
 ## 参考資料・引用
 [ Amazon CloudFront deep dive [AWS Black Belt Online Seminar]](https://d1.awsstatic.com/webinars/jp/pdf/services/20201028_BlackBelt_Amazon_CloudFront_deep_dive.pdf)
+[ CloudFront の Cache Policy と Origin Request Policy を理解する](https://qiita.com/t-kigi/items/6d7cfccdb629690b8d29)
+
