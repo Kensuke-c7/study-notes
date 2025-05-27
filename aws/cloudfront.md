@@ -217,6 +217,15 @@ CloudFrontの「リクエスト仕分け＆処理ルール」。<br>
 例：/img/logo.png は長め（1日）、/index.html は短め（数秒〜分）
 #### 圧縮（gzip/brotli）：CloudFrontでレスポンスを圧縮するかどうか
 <br><br>
+## キャッシュポリシー（Cache Policy）
+<br><br>
+## オリジンリクエストポリシー（Origin Request Policyy）
+
+
+- ビューワーリクエストのURLパス、リクエストボディ、CloufFrontが全てのオリジンリクエストに自動的に追加するHTTPヘッダ
+- ビューワーリクエストのその他の情報 (URLクエリ文字列、HTTPヘッダー、Cookieなど) は、デフォルトではオリジンリクエストに含まれない
+
+
 
 # Lambda@Edge
 CloudFrontのエッジロケーションでLambda関数を実行できるサービス。<br>
