@@ -202,10 +202,35 @@ CloudFront ディストリビューション経由でのみ S3 バケットへ�
 
 # ビヘイビア（Behavior）
 CloudFrontの「リクエスト仕分け＆処理ルール」。<br>
-リクエスト毎に「どう返すか／どこに行かせるか／キャッシュさせるか」を全部決める。<br>
-※レスポンス処理のルールではなく、あくまでリクエスト時の制御！
+Viewerリクエスト毎に「どう返すか／どこに行かせるか／キャッシュさせるか」を全部決める。<br>
+![image](https://github.com/user-attachments/assets/baab56af-56f0-4c40-ad81-7feeb2a0459d)
 <br><br>
-### ■ ビヘイビアで設定できる主な項目
+- リクエスト処理中心の設定内容：パス分岐／オリジン指定／キャッシュキー定義など
+- レスポンスにも影響：圧縮（gzip/Brotli）、CORS設定、レスポンスヘッダなど
+- 処理フェーズ別機能：CloudFront Functions、Lambda@Edgeで細かく制御可（viewer-request, origin-responseなど）
+- 1つのディストリビューション内に複数のビヘイビアを設定できる（パスパターンの優先順位に応じて処理が分岐）
+- 外部定義のキャッシュポリシー、オリジンリクエストポリシーを参照する
+<br><br>
+### ■ ビヘイビアの主な設定項目
+- パスパターン：ビヘイビアを適用するリクエストのパス（例：/images/* はS3に、/api/* はAPI Gatewayに振り分ける）
+- オリジン：リクエストの転送先（S3、ALB、EC2など）
+- キャッシュポリシー：キャッシュキーに何を含めるか（ヘッダー、Cookie、Query）
+- オリジンリクエストポリシー：オリジンにどの情報を送るか（ヘッダー、Cookie、Queryなど）
+- 署名付きURL/Cookie：コンテンツ保護のために署名を検証するキーグループまたはIAM
+- HTTPメソッド制御：許可するHTTPメソッド
+- リダイレクト：HTTP to HTTPSのリダイレクト
+- 圧縮設定：GzipやBrotliで圧縮レスポンスを許可するか
+- Lambda@Edge/Function：Lambda@Edge or CloudFront Functionのアタッチ
+- Response Headers Policy：レスポンスに追加するHTTPヘッダー（CORSなど）
+- Viewerプロトコルポリシー：HTTP→HTTPSリダイレクトするか
+- ログ設定：特定ビヘイビアだけログ記録対象にすることも可能
+<br><br>
+## キャッシュポリシー（Cache Policy）
+<br><br>
+## オリジンリクエストポリシー（Origin Request Policyy）
+
+
+
 #### パスパターン：どのリクエスト（URL）にこのビヘイビアを適用するか
 例：/images/* はS3に、/api/* はAPI Gatewayに振り分ける
 #### オリジン指定：どのバックエンド（S3/ALBなど）に転送するか
