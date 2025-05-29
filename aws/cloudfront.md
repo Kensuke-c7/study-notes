@@ -203,8 +203,6 @@ CloudFront ディストリビューション経由でのみ S3 バケットへ�
 # ビヘイビア（Behavior）
 CloudFrontの「リクエスト仕分け＆処理ルール」。<br>
 Viewerリクエスト毎に「どう返すか／どこに行かせるか／キャッシュさせるか」を全部決める。<br>
-![image](https://github.com/user-attachments/assets/baab56af-56f0-4c40-ad81-7feeb2a0459d)
-<br><br>
 - リクエスト処理中心の設定内容：パス分岐／オリジン指定／キャッシュキー定義など
 - レスポンスにも影響：圧縮（gzip/Brotli）、CORS設定、レスポンスヘッダなど
 - 処理フェーズ別機能：CloudFront Functions、Lambda@Edgeで細かく制御可（viewer-request, origin-responseなど）
