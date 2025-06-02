@@ -52,10 +52,7 @@ CloudFrontにおけるコンテンツの配信管理単位。<br>
 通常、1サイト or 1APIごとに1ディストリビューションを作成する。
 ### ■ オリジン（Origin）
 コンテンツの配信元。<br>
-S3、ALB、EC2、API Gateway、または外部のHTTPサーバーなどを指定可能。
-### ■ オリジングループ（Origin Group）
-オリジンの冗長化（フェイルオーバー）構成。<br>
-プライマリのオリジンがダウンしたとき、自動的にセカンダリへ切り替えて配信を継続。
+S3、ALB、EC2、API Gateway、外部のHTTPサーバーなどを指定。冗長構成（オリジングループ）も可能。
 ### ■ ビヘイビア（Behavior）
 リクエストパス（例：/images/*）ごとの処理ルールを定義。<br>
 以下のような設定が可能：
@@ -69,6 +66,13 @@ CloudFrontがコンテンツをキャッシュして配信する拠点（デー�
 - CloudFrontやRoute53などのグローバルサービスで利用
 - AWS Global Acceleratorの通信経路上にも利用されることがある
 <br><br>
+### 各種ポリシー
+CloudFrontの各種ポリシー。
+各ポリシーをビヘイビアに紐づけることで動作。
+#### ・キャッシュポリシー：
+#### ・オリジンリクエストポリシー：
+#### ・レスポンスヘッダポリシー：
+
 
 # ２. Distribution
 ![image](https://github.com/user-attachments/assets/446aa5b9-db76-4630-a6be-b35646a4be70)
