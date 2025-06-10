@@ -1,8 +1,9 @@
 # AWS Direct Connect（DX）：専用線を使った閉域接続サービス
-利用者がキャリアから調達する専用線の片端とAWSCloudをDirectConnectロケーションで接続するサービス。
+利用者がキャリアから調達する専用線の片端とAWSCloudをDirectConnectロケーションで接続するサービス。<br>
+1本の線（専用線）のようなイメージだが、そうではなく、<br>
+専用の入り口（VIF）を作り、AWSバックボーンネットワーク経由で、世界中のリージョン（のVPC）とプライベート接続するイメージ。
 
 ![image](https://github.com/user-attachments/assets/5ddf43c3-eb1e-4f7d-8d86-c5d10364b5f3)
-
 
 #### ■ 特徴・機能
 - 専用線（高帯域、低遅延・少ジッタ、高セキュリティ）
